@@ -1,0 +1,52 @@
+import java.util.LinkedList;
+import java.util.Queue;
+
+/*
+ * Implementation of breadth first traversal 
+ * Author: Vikash Kumar
+ * 20/5/2017
+ */
+class MyNode {
+	int key;
+	MyNode left, right;
+	
+	public MyNode(int value){
+		key = value;
+		left = null;
+		right = null;
+	}
+}
+
+public class BFS {	
+	MyNode root;
+	BFS() {
+		root = null;
+	}
+	
+	void PrintLevelOrder() {
+		MyNode tempNode;
+		Queue<MyNode> queue = new LinkedList<MyNode>();
+		queue.add(root);
+		while(!queue.isEmpty()){
+			tempNode = queue.remove();
+			System.out.println(tempNode.key);
+			if (tempNode.left != null){
+				queue.add(tempNode.left);
+			}
+			if (tempNode.right != null){
+				queue.add(tempNode.right);
+			}
+		}
+	}
+	public static void main(String[] args) {
+		BFS graph = new BFS();
+		graph.root = new MyNode(1);
+		graph.root.left = new MyNode(2);
+		graph.root.right = new MyNode(3);
+		graph.root.left.left = new MyNode(4);
+		graph.root.left.right = new MyNode(7);
+		graph.root.right.left = new MyNode(6);
+		graph.root.right.right = new MyNode(5);
+		graph.PrintLevelOrder();
+	}
+}
