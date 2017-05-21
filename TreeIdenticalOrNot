@@ -1,0 +1,57 @@
+
+/*
+    To check if the two tree are equal or not. If equal return true else return false
+*/
+class  Node {
+	int key;
+	Node left, right = null;
+	public Node(int item){
+		key = item;
+		left = right = null;
+	}
+}
+
+class Tree {
+	Node root1, root2;
+	Tree(){
+		root1 = null;
+		root2 = null;
+	}
+	
+	boolean AreTreeEqual(Node tree1, Node tree2) {
+		if (null == tree1 && null == tree2) {
+			return true;
+		}
+		if (tree1 != null && tree2 != null) {
+		return (tree1.key == tree2.key && AreTreeEqual(tree1.left, tree2.left) 
+					&& AreTreeEqual(tree1.right, tree2.right));
+		}
+		return false;
+	}
+	
+	void IfTreeEqual() {
+		System.out.println(AreTreeEqual(root1, root2));
+	}
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+        Tree myTree = new Tree();
+        myTree.root1 = new Node(1);
+        myTree.root1.left = new Node(2);
+        myTree.root1.right = new Node(3);
+        myTree.root1.left.left = new Node(4);
+        myTree.root1.right.right = new Node(5);
+        myTree.root1.left.right = new Node(6);
+        myTree.root1.right.left = new Node(7);
+        
+        myTree.root2 = new Node(1);
+        myTree.root2.left = new Node(2);
+        myTree.root2.right = new Node(3);
+        myTree.root2.left.left = new Node(4);
+        myTree.root2.right.right = new Node(5);
+        myTree.root2.left.right = new Node(6);
+        myTree.root2.right.left = new Node(7);
+        
+        myTree.IfTreeEqual();
+	}
+}
